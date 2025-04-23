@@ -1,0 +1,18 @@
+version: '3'
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    network_mode: host
+    environment:
+      - N8N_BASE_URL=https://n8n.erudites.in
+      - N8N_CORS_ALLOW_ORIGINS=https://n8n.erudites.in
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_HOST=0.0.0.0  # Bind WebSocket to all interfaces
+      - WEBHOOK_URL=https://n8n.erudites.in
+    volumes:
+      - n8n_data:/home/node/.n8n
+volumes:
+  n8n_data:
+
